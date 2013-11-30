@@ -77,14 +77,9 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
             }
             //Dont change the code before it
 
-            //Your code here about test explanation animation
-            //$content.find(".explanation").html("Something text for example");
-            //
-            //
-            //
-            //
-            //
-
+            var canvas = new StickCanvas();
+            canvas.prepareCanvas($content.find(".explanation")[0], checkioInput, rightResult);
+            canvas.animateCanvas();
 
             this_e.setAnimationHeight($content.height() + 60);
 
@@ -106,26 +101,96 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
 //            });
 //        });
 
-        var colorOrange4 = "#F0801A";
-        var colorOrange3 = "#FA8F00";
-        var colorOrange2 = "#FAA600";
-        var colorOrange1 = "#FABA00";
+        function StickCanvas(options) {
+            var format = Raphael.format;
+            var colorOrange4 = "#F0801A";
+            var colorOrange3 = "#FA8F00";
+            var colorOrange2 = "#FAA600";
+            var colorOrange1 = "#FABA00";
 
-        var colorBlue4 = "#294270";
-        var colorBlue3 = "#006CA9";
-        var colorBlue2 = "#65A1CF";
-        var colorBlue1 = "#8FC7ED";
+            var colorBlue4 = "#294270";
+            var colorBlue3 = "#006CA9";
+            var colorBlue2 = "#65A1CF";
+            var colorBlue1 = "#8FC7ED";
 
-        var colorGrey4 = "#737370";
-        var colorGrey3 = "#9D9E9E";
-        var colorGrey2 = "#C5C6C6";
-        var colorGrey1 = "#EBEDED";
+            var colorGrey4 = "#737370";
+            var colorGrey3 = "#9D9E9E";
+            var colorGrey2 = "#C5C6C6";
+            var colorGrey1 = "#EBEDED";
 
-        var colorWhite = "#FFFFFF";
-        //Your Additional functions or objects inside scope
-        //
-        //
-        //
+            var colorWhite = "#FFFFFF";
+
+            options = options || {};
+
+            var x0 = options.x0 || 10,
+                y0 = options.y0 || 10,
+                sizeX = options.sizeX || 380;
+
+            var sizeY;
+
+            var padding = options.padding || 20;
+            var textPadding = options.textPadding || 40;
+
+            var fontSize = options.fontSize || 15;
+
+            var widthLine = options.widthLine || 10;
+
+            var attrBackLine = {"stroke": colorBlue2, "stroke-width": widthLine};
+            var attrMainLine = {"stroke": colorBlue4, "stroke-width": widthLine};
+            var attrPartLine = {"stroke": colorBlue3, "stroke-width": widthLine};
+
+            var attrNumb = {"font-size": fontSize, "stroke": colorBlue4, "font-family": "Verdana", "font-weight": "bold"};
+
+            var unit;
+            var paper;
+            var partSet;
+
+            var delay = 300;
+            var stepDelay = delay * 1.2;
+
+
+            this.prepareCanvas = function (dom, stickLen, parts) {
+                paper = Raphael(dom, sizeX, (parts.length) * padding + y0 * 2);
+                partSet = paper.set();
+                var maxSize = sizeX - 2 * x0 - textPadding;
+                unit = maxSize / stickLen;
+                paper.path(format("M{0},{1}H{2}",
+                    x0 + textPadding,
+                    y0,
+                    sizeX - x0)).attr(attrBackLine);
+                paper.text(x0 + textPadding / 2, y0, stickLen).attr(attrNumb);
+                var startPart = x0 + textPadding;
+                for (var i = parts.length - 1; i >= 0; i--) {
+                    var endPart = parts[i] * unit + startPart;
+                    var p = paper.path(format(
+                        "M{0},{1}H{2}",
+                        startPart, y0, endPart
+                    )).attr(attrMainLine);
+                    p.mark = parts[i];
+                    partSet.push(p);
+                    startPart = endPart;
+                }
+            };
+
+            this.animateCanvas = function () {
+                for (var i = 0; i < partSet.length; i++) {
+                    setTimeout(function (k) {
+                        return function () {
+                            var p = partSet[k];
+                            var newPath = format("M{0},{1}H{2}",
+                                x0 + textPadding,
+                                y0 + padding * (k + 1),
+                                x0 + textPadding + unit * p.mark
+                            );
+                            partSet[k].animate({path: newPath, "stroke": colorBlue3}, delay, function () {
+                                paper.text(x0 + textPadding / 2, y0 + padding * (k + 1), p.mark).attr(attrNumb);
+                            });
+
+                        }
+                    }(i), stepDelay * i);
+                }
+            };
+        }
 
 
     }
