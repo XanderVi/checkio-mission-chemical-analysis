@@ -60,13 +60,16 @@
 
 .tryit-content {
     background-color: #dfe8f7;
-    font-family: verdana;
+    font-family: Verdana, Arial, sans-serif;
 }
 
 .tryit-content .tool td{
     text-align: center;
-    vertical-align: top;
+    vertical-align: middle;
     padding: 3px;
+    font-family: Verdana, Arial, sans-serif;
+    color: #294270;
+    font-size: 15px;
 }
 
 /*it for firefox*/
@@ -78,13 +81,12 @@
     font-size: 16px;
     text-align: center;
     color: #294270;
-    width: 160px;
 }
 
 .tryit-content .btn {
     padding: 4px 6px;
     font-size: 14px;
-    font-family: Verdana;
+    font-family: Verdana, Arial, sans-serif;
     font-weight: 500;
     line-height: 1.428571429;
     text-align: center;
@@ -129,6 +131,7 @@ fieldset[disabled] .btn {
 .tryit-content input[type="text"],
 .tryit-content input[type="number"]
 {
+    width: 100px;
     display: inline-block;
     padding: 4px 6px;
     font-size: 14px;

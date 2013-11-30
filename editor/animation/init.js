@@ -85,21 +85,75 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
 
         });
 
-        //This is for Tryit (but not necessary)
-//        var $tryit;
-//        ext.set_console_process_ret(function (this_e, ret) {
-//            $tryit.find(".checkio-result").html("Result<br>" + ret);
-//        });
-//
-//        ext.set_generate_animation_panel(function (this_e) {
-//            $tryit = $(this_e.setHtmlTryIt(ext.get_template('tryit'))).find('.tryit-content');
-//            $tryit.find('.bn-check').click(function (e) {
-//                e.preventDefault();
-//                this_e.sendToConsoleCheckiO("something");
-//                e.stopPropagation();
-//                return false;
-//            });
-//        });
+        var $tryit;
+        var tCanvas;
+        var data;
+
+        ext.set_console_process_ret(function (this_e, ret) {
+            var $chRes = $tryit.find(".checkio-result");
+            $chRes.html("");
+            try {
+                ret = JSON.parse(ret);
+            }
+            catch(err) {
+                $chRes.html("Can't parse the result.<br> Result:<br>" + ret);
+                return false;
+            }
+
+            if (!Array.isArray(ret)) {
+                $chRes.html("The result is not a list.<br> Result:<br>" + JSON.stringify(ret));
+                return false;
+            }
+            var sum = 0;
+            for (var i = 0; i < ret.length; i++){
+                if (isNaN(ret[i])) {
+                    $chRes.html("The list should conatain only numbers.<br> Result:<br>" + JSON.stringify(ret));
+                    return false;
+                }
+                if (Number(ret[i]) !== Math.floor(Number(ret[i]))) {
+                    $chRes.html("The list should conatain only integers.<br> Result:<br>" + JSON.stringify(ret));
+                    return false;
+                }
+                sum += ret[i];
+            }
+            if (isNaN(data) || Number(data) !== Math.floor(Number(data))) {
+                $chRes.html("The input data is not an integer.<br> Result:<br>" + JSON.stringify(ret));
+                return false;
+            }
+            if (data <= 0) {
+                $chRes.html("The input data is not an positive integer.<br> Result:<br>" + JSON.stringify(ret));
+                return false;
+            }
+
+            if (sum > data) {
+                $chRes.html("The sum of the parts is greater than the stick's length.<br> Result:<br>" + JSON.stringify(ret));
+                return false;
+            }
+            $chRes.html("Result:&nbsp;" + JSON.stringify(ret));
+            tCanvas.prepareCanvas($tryit.find(".tryit-canvas")[0], data, ret);
+            tCanvas.animateCanvas();
+        });
+
+        ext.set_generate_animation_panel(function (this_e) {
+            $tryit = $(this_e.setHtmlTryIt(ext.get_template('tryit'))).find('.tryit-content');
+            tCanvas = new StickCanvas();
+
+//                {x0: 5, y0: 10, sizeX: 300});
+            var $input = data = $tryit.find(".input-length");
+
+            $tryit.find('.bn-check').click(function (e) {
+                e.preventDefault();
+                data = $input.val();
+                tCanvas.clear();
+                if (!isNaN(data)) {
+                    data = Number(data);
+                }
+
+                this_e.sendToConsoleCheckiO(data);
+                e.stopPropagation();
+                return false;
+            });
+        });
 
         function StickCanvas(options) {
             var format = Raphael.format;
@@ -150,6 +204,12 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
 
 
             this.prepareCanvas = function (dom, stickLen, parts) {
+                if (stickLen > 999) {
+                    textPadding = (String(stickLen).length + 1) * 10;
+                }
+                else {
+                    textPadding = 40;
+                }
                 paper = Raphael(dom, sizeX, (parts.length) * padding + y0 * 2);
                 partSet = paper.set();
                 var maxSize = sizeX - 2 * x0 - textPadding;
@@ -190,6 +250,13 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
                     }(i), stepDelay * i);
                 }
             };
+
+            this.clear = function() {
+                if (paper) {
+                    paper.remove();
+                    paper = false;
+                }
+            }
         }
 
 
