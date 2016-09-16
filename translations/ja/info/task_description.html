@@ -1,0 +1,111 @@
+﻿<style type="text/css">
+    .story img {
+        float: left;
+        /*padding: 10px;*/
+        margin: 10px;
+        border: black;
+        /*box-shadow: 0 0 20px 10px rgba(0,0,0,1);*/
+        /*-moz-box-shadow: 0 0 20px 10px rgba(0,0,0,1);*/
+        /*-webkit-box-shadow: 0 0 20px 10px rgba(0,0,0,1);*/
+
+    }
+</style>
+<div class="story" style="margin-bottom: 15px">
+    <img src="{{MEDIA}}alice-puppy-sepia.png" width="320px"/>
+</div>
+<div class="story" style="text-indent: 20px; padding-left: 20px;">
+    <p>巨大な子犬が大きな丸い瞳で彼女を見下ろしており、
+        彼女に触ろうとして脚をそろりと伸ばしてきました。
+        「可哀想な子!」彼女はなだめる様にいい、頑張って口笛をふいてやりました。
+        しかし子犬がお腹をすかしていて彼女を食べようとしており
+        全ては無駄に終わるのではと思い内心大変怖がっていたのです。
+    </p>
+
+    <p>彼女は特に考えも無しに棒切れを拾って子犬に差し出してみると、
+        子犬は嬉しそうにキャンキャン鳴きながらジャンプし
+        それに突進してきてかまける振りをしました。
+        彼女は子犬の下敷きにされないように大きなアザミの後ろに逃げました。
+        そして反対側から現れると子犬はまた棒切れに向かって突進し
+        てそれを早く手にしようと転がっていました。
+        アリスはその様子は馬車馬と遊ぶゲームにそっくりだと思い、
+        いつ踏みつけられるかもしれないのでまたアザミの向こう側に逃げました。
+        子犬は大きく下がったり少し前に出たりして棒切れに短い突進を繰り返しながら
+        かすれ声で吠えていましたが、仕舞いには息切れし離れたところで座り込んでしまいました。
+        舌を垂らしたまま半分目を閉じています。</p>
+
+    <p style="float: right">
+        「不思議の国のアリス」ルイス・キャロル
+    </p>
+
+    <p style="clear: both;"></p>
+
+    <p style="text-indent: 0; padding-left: 240px;">
+        私は2ポンドの重さの棒切れを見つけた:<br>
+        ある日それを同じ重さになるように8つに切った。<br>
+        重さは各々いくらだろう?<br>
+        (みんなは「1/4ポンド」というだろうがそれは間違いだ)
+    </p>
+
+    <p style="float: right">
+        「不思議の国からのパズル」ルイス・キャロル
+    </p>
+
+</div>
+<p>
+    ロボット達は棒切れをいくつかに切り分けたかった。棒切れの長さは<strong>N</strong>インチである。
+    我々はロボット達が棒切れを切るのを手伝おう。切れ分けたそれらは整数値の長さとする(1, 2, 3 .. インチ等、1.2は駄目)
+    そして我々は一続きの数字…中でも特に三角数を愛している。
+    (<a href="http://en.wikipedia.org/wiki/Triangular_number">三角数</a>),
+    あなたは棒切れを一続きの三角数の長さで一番多くの数に切り分けること。
+    また切り分けた断片は各々異なる長さであること。
+    例: <strong>64</strong> は <strong>15, 21, 28</strong>に切り分けるべきである。
+    なぜなら <strong>28, 36</strong> はそれより少ないし、 <strong>1, 3, 15, 45</strong> は連続した三角数でないからである。
+</p>
+
+<p>
+    あなたには棒切れの長さ(N)が与えられる。
+    解答は昇順の整数値のリストで返すこと。
+    もし解がなければ空のリストを返すこと。.
+</p>
+
+<p style="text-align: center;">
+    <img class="for_info_only" title="sawing" src="{{MEDIA}}sawing.png" alt="sawing" width="440"/>
+    <img class="for_editor_only" title="sawing" src="{{MEDIA}}sawing.png" alt="sawing" width="380px"/>
+</p>
+
+<p>
+    <strong>入力: </strong> 棒切れの長さ(integer型)
+</p>
+
+<p>
+    <strong>出力: </strong> 三角数の断片(integer型のリスト) または空のリスト
+</p>
+
+
+<div class="for_info_only">
+    <p>
+        <strong>例:</strong>
+    </p>
+    <pre class="brush: python">
+checkio(64) == [15, 21, 28]
+checkio(371) == [36, 45, 55, 66, 78, 91]
+checkio(225) == [105, 120]
+checkio(882) == []
+    </pre>
+</div>
+
+<p class="for_info_only">
+    <strong>どのように使われるか: </strong>
+    このタスクで三角数について学ぶことができる。
+    三角数は正三角形型のオブジェクトより勘定される。
+    この興味深い一連の数値は様々な状況で使われる。<br>
+
+    現実での利用例は:
+    リーグ戦として行われる競技での試合回数は三角数 T<sub>n−1</sub>で求まる。
+    例えば参加しているのが4チームなら6試合必要となり、8チームなら28試合必要である。
+
+</p>
+
+<p>
+    <strong>事前条件n:</strong> 0 < length < 1000
+</p>
