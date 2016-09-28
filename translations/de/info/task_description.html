@@ -1,0 +1,123 @@
+<style type="text/css">
+    .story img {
+        float: left;
+        /*padding: 10px;*/
+        margin: 10px;
+        border: black;
+        /*box-shadow: 0 0 20px 10px rgba(0,0,0,1);*/
+        /*-moz-box-shadow: 0 0 20px 10px rgba(0,0,0,1);*/
+        /*-webkit-box-shadow: 0 0 20px 10px rgba(0,0,0,1);*/
+    }
+</style>
+<div class="story" style="margin-bottom: 15px">
+    <img src="{{MEDIA}}alice-puppy-sepia.png" width="320px"/>
+</div>
+<div class="story" style="text-indent: 20px; padding-left: 20px;">
+    <p>Ein ungeheuer großer junger Hund sah mit seinen hervorstehenden 
+    runden Augen auf sie herab und machte einen schwachen Versuch, eine 
+    Pfote auszustrecken und sie zu berühren. »Armes kleines Ding!« sagte 
+    Alice in liebkosendem Tone, und sie gab sich alle Mühe, ihm zu pfeifen; 
+    dabei hatte sie aber große Angst, ob er auch nicht hungrig wäre, denn 
+    dann würde er sie wahrscheinlich auffressen trotz allen Liebkosungen.
+    </p>
+
+    <p>Ohne recht zu wissen was sie that, nahm sie ein Stäbchen auf und 
+    hielt es ihm hin; worauf das ungeschickte Thierchen mit allen vier Füßen 
+    zugleich in die Höhe sprang, vor Entzücken laut aufbellte, auf das
+    Stäbchen losrannte und that, als wolle es es zerreißen; da wich Alice ihm aus 
+    hinter eine große Distel, um nicht zertreten zu werden; und so wie sie auf der 
+    andern Seite hervorkam, lief der junge Hund wieder auf das Stäbchen los und 
+    fiel kopfüber in seiner Eile, es zu fangen. Alice, der es vorkam, als wenn 
+    Jemand mit einem Fuhrmannspferde Zeck spielt, und die jeden Augenblick fürchtete, 
+    unter seine Füße zu gerathen, lief wieder hinter die Distel; da machte der junge 
+    Hund eine Reihe von kurzen Anläufen auf das Stäbchen, wobei er jedes Mal ein klein 
+    wenig vorwärts und ein gutes Stück zurück rannte und sich heiser bellte, bis er
+    sich zuletzt mit zum Munde heraushängender Zunge und halb geschlossenen Augen, 
+    ganz außer Athem hinsetzte.
+</p>
+
+    <p style="float: right">
+        "Alice's Abenteuer im Wunderland" Lewis Carroll<br>
+        Aus dem Englischen von Antonie Zimmermann, 1869
+    </p>
+
+    <p style="clear: both;"></p>
+
+    <p style="text-indent: 0; text-align: center;">
+        Mein Fund, ein Stock, er wog 2 Pfund:<br>
+        Eines Tages, ich zersägte ihn<br>
+        In acht Stück von gleich Gewicht!<br>
+        Wieviel wiegte jedes davon?<br>
+        (Jeder der sagt, "ein Viertelpfund", liegt falsch.)
+    </p>
+
+    <p style="float: right">
+        "Alice im Wunderland der Rätsel ." Lewis Carroll <br>
+        Freie Übersetzung
+    </p>
+
+</div>
+<p>
+    Die Roboter wollen den Stock in mehrere Stücke sägen. Die Länge des Sticks ist <strong>N</strong> Zoll.
+    Wir sollten unseren Robotern helfen. Jedes Stück muss eine ganzzahlige Länge aufweisen (1, 2, 3 .. Zoll, nicht 1.2)
+    
+    The robots want to saw the stick in several pieces. The length of the stick is <strong>N</strong> inches.
+    We should help our robots saw the stick. All of the parts should have integer lengths (1, 2, 3 .. inches, but not
+    1.2).
+    As we love the numerical series and especially the Triangular numbers
+    (<a href="http://en.wikipedia.org/wiki/Triangular_number">read more about Triangular numbers on Wikipedia</a>),
+    you should saw the stick so that the lengths form the consecutive fragment of the Triangular numbers series
+    with the maximum quantity (fragment's length).
+    The parts should have different lengths (no repeating).
+    For example: <strong>64</strong> should divided at <strong>15, 21, 28</strong>,
+    because <strong>28, 36</strong> is shorter and <strong>1, 3, 15, 45</strong> is not a consecutive fragment.
+</p>
+
+<p>
+    You are given a length of the stick (N).
+    You should return the list of lengths (integers) for the parts in ascending order.
+    If it's not possible and the problem does not have a solution, then you should return an empty list.
+</p>
+
+<p style="text-align: center;">
+    <img class="for_info_only" title="sawing" src="{{MEDIA}}sawing.png" alt="sawing" width="440"/>
+    <img class="for_editor_only" title="sawing" src="{{MEDIA}}sawing.png" alt="sawing" width="380px"/>
+</p>
+
+<p>
+    <strong>Input: </strong> A length of the stick as an integer.
+</p>
+
+<p>
+    <strong>Output: </strong> A fragment of the Triangular numbers as a list of integers (sorted in ascending order) or an empty list.
+</p>
+
+
+<div class="for_info_only">
+    <p>
+        <strong>Example:</strong>
+    </p>
+    <pre class="brush: python">
+checkio(64) == [15, 21, 28]
+checkio(371) == [36, 45, 55, 66, 78, 91]
+checkio(225) == [105, 120]
+checkio(882) == []
+    </pre>
+</div>
+
+<p class="for_info_only">
+    <strong>How it is used: </strong>
+    In this task you will learn about triangular numbers.
+    A triangular number or triangle number counts the objects that form an equilateral triangle.
+    This is an interesting sequence which has various applications.<br>
+
+    Here’s a real world application:
+    In a competitive tournament format that uses a round-robin group stages,
+    the number of matches that need to be played between n teams is equal to the triangular number T<sub>n−1</sub>.
+    For example, a group stage with 4 teams requires 6 matches, and a group stage with 8 teams requires 28 matches.
+
+</p>
+
+<p>
+    <strong>Precondition:</strong> 0 < length < 1000
+</p>
