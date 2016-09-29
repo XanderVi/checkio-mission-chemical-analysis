@@ -46,8 +46,8 @@
     <p style="text-indent: 0; text-align: center;">
         Mein Fund, ein Stock, er wog 2 Pfund:<br>
         Eines Tages, ich zersägte ihn<br>
-        In acht Stück von gleich Gewicht!<br>
-        Wieviel wiegte jedes davon?<br>
+        Acht Stück von gleich Gewicht!<br>
+        Wieviel wiegte ein jedes noch?<br>
         (Jeder der sagt, "ein Viertelpfund", liegt falsch.)
     </p>
 
@@ -58,25 +58,21 @@
 
 </div>
 <p>
-    Die Roboter wollen den Stock in mehrere Stücke sägen. Die Länge des Sticks ist <strong>N</strong> Zoll.
-    Wir sollten unseren Robotern helfen. Jedes Stück muss eine ganzzahlige Länge aufweisen (1, 2, 3 .. Zoll, nicht 1.2)
-    
-    The robots want to saw the stick in several pieces. The length of the stick is <strong>N</strong> inches.
-    We should help our robots saw the stick. All of the parts should have integer lengths (1, 2, 3 .. inches, but not
-    1.2).
-    As we love the numerical series and especially the Triangular numbers
-    (<a href="http://en.wikipedia.org/wiki/Triangular_number">read more about Triangular numbers on Wikipedia</a>),
-    you should saw the stick so that the lengths form the consecutive fragment of the Triangular numbers series
-    with the maximum quantity (fragment's length).
-    The parts should have different lengths (no repeating).
-    For example: <strong>64</strong> should divided at <strong>15, 21, 28</strong>,
-    because <strong>28, 36</strong> is shorter and <strong>1, 3, 15, 45</strong> is not a consecutive fragment.
+    Die Roboter wollen den Stock in mehrere Stücke sägen. Die Länge des Stocks ist <strong>N</strong> Zoll.
+    Wir sollten unseren Robotern dabei helfen. Jedes Stück muss eine ganzzahlige Länge aufweisen (1, 2, 3 .. Zoll, 
+    nicht 1.2).
+    Wir lieben Zahlenreihen und speziell die Dreieckszahlen (<a href="https://de.wikipedia.org/wiki/Dreieckszahl">mehr 
+    über Dreieckszahlen auf Wikipedia</a>), also sollst Du den Stock so zersägen, dass die resultierenden Längen eine 
+    fortlaufende Serie der Dreieckszahlen bilden. Wähle immer die maximale Größe (Länge der Reihe).
+    Die Teile müssen alle verschiedene Längen haben (keine Wiederholung).
+    Zum Beispiel: <strong>64</strong> soll in <strong>15, 21, 28</strong> geteilt werden,
+    da <strong>28, 36</strong> kürzer ist, und <strong>1, 3, 15, 45</strong> keine fortlaufende Reihe bildet.
 </p>
 
 <p>
-    You are given a length of the stick (N).
-    You should return the list of lengths (integers) for the parts in ascending order.
-    If it's not possible and the problem does not have a solution, then you should return an empty list.
+    Gegeben ist die Länge des Stocks (N).
+    Deine Lösung soll eine Liste mit Längen der Teile in aufsteigender Folge zurückgeben.
+    Wenn es nicht möglich ist, also das Problem keine Lösung hat, dann gib eine leere Liste zurück.
 </p>
 
 <p style="text-align: center;">
@@ -85,17 +81,18 @@
 </p>
 
 <p>
-    <strong>Input: </strong> A length of the stick as an integer.
+    <strong>Eingabe: </strong> Die Länge des Stockes als Ganzzahl.
 </p>
 
 <p>
-    <strong>Output: </strong> A fragment of the Triangular numbers as a list of integers (sorted in ascending order) or an empty list.
+    <strong>Ausgabe: </strong> Ein Ausschnitt der Dreieckszahlen als Liste von Ganzzahlen (sortiert in 
+    absteigender Folge) oder eine leere Liste.  
 </p>
 
 
 <div class="for_info_only">
     <p>
-        <strong>Example:</strong>
+        <strong>Beispiel:</strong>
     </p>
     <pre class="brush: python">
 checkio(64) == [15, 21, 28]
@@ -106,18 +103,17 @@ checkio(882) == []
 </div>
 
 <p class="for_info_only">
-    <strong>How it is used: </strong>
-    In this task you will learn about triangular numbers.
-    A triangular number or triangle number counts the objects that form an equilateral triangle.
-    This is an interesting sequence which has various applications.<br>
-
-    Here’s a real world application:
-    In a competitive tournament format that uses a round-robin group stages,
-    the number of matches that need to be played between n teams is equal to the triangular number T<sub>n−1</sub>.
-    For example, a group stage with 4 teams requires 6 matches, and a group stage with 8 teams requires 28 matches.
-
-</p>
+    <strong>Wozu das gut ist: </strong>
+    In dieser Aufgabe lernst Du etwas über Dreieckszahlen.
+    Eine Dreieckszahl ist gleich der Anzahl Teile um ein gleichseitiges Dreieck zu legen.
+    Das ist eine interessante Sequenz mit vielen Anwendungen.
+    <br>
+    Dazu eine Anwendung der realen Welt:
+    In kompetitiven Wettkämpfen, die in Gruppenspielen als Rundenturnier ausgetragen werden, ist
+    die Nummer der Begegnungen zwischen n Teams gleich der Dreieckszahl T<sub>n−1</sub>.
+    Zum Beispiel benötigt ein Gruppenspiel mit 4 Teams 6, und eines mit 8 Teams 28 Spiele.
+   </p>
 
 <p>
-    <strong>Precondition:</strong> 0 < length < 1000
+    <strong>Bedingung:</strong> 0 < length < 1000
 </p>
