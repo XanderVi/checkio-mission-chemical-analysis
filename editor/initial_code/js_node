@@ -1,16 +1,19 @@
 "use strict";
 
-function stick(data) {
+function atoms(formula, limit) {
     // your code here
     return 0;
 }
 
 var assert = require('assert');
 if (!global.is_checking) {
+    console.log("Example:");
+    console.log(atoms('C2H5OH', 2));
+
     // These "asserts" are used for self-checking and not for an auto-testing
-    assert.deepEqual(stick(64), [15, 21, 28])
-    assert.deepEqual(stick(371), [36, 45, 55, 66, 78, 91])
-    assert.deepEqual(stick(225), [105, 120])
-    assert.deepEqual(stick(882), [])
+    assert.deepEqual(atoms('C2H5OH', 2), ['C', 'H'])
+    assert.deepEqual(atoms('H2O', 2), ['H'])
+    assert.deepEqual(atoms('Mg(OH)2', 1), ['H', 'Mg', 'O'])
+    assert.deepEqual(atoms('K4[ON(SO3)2]2', 4), ['K', 'O', 'S'])
     console.log("Coding complete? Click 'Check' to earn cool rewards!");
 }

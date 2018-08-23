@@ -10,63 +10,44 @@ Each test is dict with
 TESTS = {
     "Basics": [
         {
-            "input": 64,
-            "answer": [15, 21, 28],
+            "input": ['C2H5OH', 2],
+            "answer": ['C', 'H'],
         },
         {
-            "input": 371,
-            "answer": [36, 45, 55, 66, 78, 91],
+            "input": ['H2O', 2],
+            "answer": ['H'],
         },
         {
-            "input": 225,
-            "answer": [105, 120],
+            "input": ['Mg(OH)2', 1],
+            "answer": ['H', 'Mg', 'O'],
         },
         {
-            "input": 882,
-            "answer": [],
-        },
+            "input": ['K4[ON(SO3)2]2', 4],
+            "answer": ['K', 'O', 'S'],
+        }
     ],
     "Extra": [
         {
-            "input": 631,
-            "answer": [190, 210, 231]
+            "input": ['C2H6O', 6],
+            "answer": ['H'],
         },
         {
-            "input": 130,
-            "answer": [21, 28, 36, 45]
+            "input": ['CaF2', 1],
+            "answer": ['Ca', 'F'],
         },
         {
-            "input": 216,
-            "answer": [6, 10, 15, 21, 28, 36, 45, 55]
+            "input": ['(NH4)2SO4', 4],
+            "answer": ['H', 'O'],
         },
         {
-            "input": 219,
-            "answer": [3, 6, 10, 15, 21, 28, 36, 45, 55]
-        },
-
-        {
-            "input": 994,
-            "answer": []
-        },
-        {
-            "input": 454,
-            "answer": [3, 6, 10, 15, 21, 28, 36, 45, 55, 66, 78, 91]
-        },
-        {
-            "input": 136,
-            "answer": [36, 45, 55]
+            "input": ['Mg3(PO4)2', 2],
+            "answer": ['Mg', 'O', 'P'],
         },
 
         {
-            "input": 5,
-            "answer": []
-        },
-
-        {
-            "input": 10,
-            "answer": [1, 3, 6]
+            "input": ['(CH3COO)2Ca', 4],
+            "answer": ['H', 'O'],
         }
-
 
     ]
 }

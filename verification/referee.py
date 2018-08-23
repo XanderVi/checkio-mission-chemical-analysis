@@ -39,11 +39,11 @@ api.add_listener(
     CheckiOReferee(
         tests=TESTS,
         cover_code={
-            #'js-node': cover_codes.js_unwrap_args,
-            #'python-3': cover_codes.unwrap_args
+            'js-node': cover_codes.js_unwrap_args,
+            'python-3': cover_codes.unwrap_args
         },
         function_name={
-            "python": "stick",
-            "js": "stick"
+            "python": "atoms",
+            "js": "atoms"
         }
         ).on_ready)

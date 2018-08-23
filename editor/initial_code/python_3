@@ -1,9 +1,14 @@
-def stick(number):
-    return [number // 2, number - number // 2]
+def atoms(formula, limit):
+    #replace this for solution
+    return 0
 
-#These "asserts" using only for self-checking and not necessary for auto-testing
 if __name__ == '__main__':
-    assert stick(64) == [15, 21, 28], "1st example"
-    assert stick(371) == [36, 45, 55, 66, 78, 91], "1st example"
-    assert stick(225) == [105, 120], "1st example"
-    assert stick(882) == [], "1st example"
+    print("Example:")
+    print(atoms('C2H5OH', 2))
+
+    #These "asserts" using only for self-checking and not necessary for auto-testing
+    assert atoms('C2H5OH', 2) == ['C', 'H']
+    assert atoms('H2O', 2) == ['H']
+    assert atoms('Mg(OH)2', 1) == ['H', 'Mg', 'O']
+    assert atoms('K4[ON(SO3)2]2', 4) == ['K', 'O', 'S']
+    print("Coding complete? Click 'Check' to earn cool rewards!")
