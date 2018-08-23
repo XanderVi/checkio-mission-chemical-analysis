@@ -46,7 +46,7 @@ TESTS = {
 
         {
             "input": ['(CH3COO)2Ca', 4],
-            "answer": ['H', 'O'],
+            "answer": ['C', 'H', 'O'],
         }
 
     ]
